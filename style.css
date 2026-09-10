@@ -1,0 +1,62 @@
+/* ============================================================
+   COMP 322 - Assignment 2
+   style.css
+   Author: Charlestone Mayenga
+   Purpose: All styling for little_prince.html. The assignment
+            requires CSS rules rather than inline style
+            attributes, so every visual choice lives here.
+   ============================================================ */
+
+/* ---------- Page defaults ---------- */
+/* The source image uses a serif face at a fairly small size,
+   set in a narrow column. */
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    line-height: 1.35;
+    color: #000000;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 24px;
+}
+
+/* Constrains the content to a narrow column like the original */
+.passage {
+    max-width: 380px;
+}
+
+/* ---------- Book cover image ---------- */
+.cover {
+    display: block;
+    width: 380px;
+    margin-bottom: 12px;
+}
+
+/* ---------- Text treatments ---------- */
+/* Each class below matches one of the highlighting styles used
+   in the assignment screenshot. Apply them with <span>. */
+
+/* Plain underline */
+.underline {
+    text-decoration: underline;
+}
+
+/* Yellow marker highlight, still underlined */
+.highlight {
+    background-color: #ffff00;
+    text-decoration: underline;
+}
+
+/* Red bold text used for the narrator's inner monologue */
+.quote {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+/* ---------- Navigation link ---------- */
+.back-link {
+    display: block;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
