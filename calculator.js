@@ -3,13 +3,14 @@
    calculator.js
    Author: Charlestone Mayenga
    Purpose: Repeatedly prompt the user for two numbers and an
-            operator, then display each calculation in a table.
+            operator, compute the result, and display each
+            calculation in a table followed by a summary table.
    ============================================================ */
 
 let keepGoing = true;
 
-// Collects every valid numeric result so the summary table in
-// step 4 can compute min, max, average and total.
+// Collects every valid numeric result so the summary table
+// can compute min, max, average and total.
 let validResults = [];
 
 // ----- Open the results table -----
@@ -44,7 +45,8 @@ while (keepGoing) {
     let result;
 
     if (isNaN(x) || isNaN(y) || x === "" || y === "") {
-        // Non-numeric input in either number
+        // Non-numeric or blank input in either number.
+        // isNaN("") is false, so the empty check is needed too.
         result = "Error: not a number";
     } else {
         // Convert the strings to actual numbers before computing.
@@ -66,9 +68,11 @@ while (keepGoing) {
             result = "Error: invalid operator";
         }
 
-        // Track valid numeric results for the summary table
+        // Store the full-precision value for the summary math,
+        // then round the copy that gets displayed in the table
         if (typeof result === "number") {
             validResults.push(result);
+            result = Number(result.toFixed(2));
         }
     }
 
@@ -80,3 +84,44 @@ while (keepGoing) {
 
 // ----- Close the results table -----
 document.write("</table>");
+
+/* ============================================================
+   Summary table
+   Reports min, max, average and total across every valid
+   numeric result. Rows that produced an error were never
+   pushed into validResults, so they are excluded here.
+   ============================================================ */
+
+document.write("<h2>Summary of Valid Results</h2>");
+
+if (validResults.length === 0) {
+    // Nothing valid to summarize — avoids dividing by zero and
+    // avoids seeding min/max from an undefined array slot.
+    document.write("<p>No valid calculations were entered.</p>");
+} else {
+
+    let min = validResults[0];
+    let max = validResults[0];
+    let total = 0;
+
+    // Walk the list once, tracking the smallest, largest and sum
+    for (let i = 0; i < validResults.length; i++) {
+        if (validResults[i] < min) {
+            min = validResults[i];
+        }
+        if (validResults[i] > max) {
+            max = validResults[i];
+        }
+        total = total + validResults[i];
+    }
+
+    let avg = total / validResults.length;
+
+    document.write("<table>");
+    document.write("<tr><th>Minimum</th><th>Maximum</th>" +
+                   "<th>Average</th><th>Total</th></tr>");
+    document.write("<tr><td>" + min.toFixed(2) + "</td><td>" +
+                   max.toFixed(2) + "</td><td>" + avg.toFixed(2) +
+                   "</td><td>" + total.toFixed(2) + "</td></tr>");
+    document.write("</table>");
+}
