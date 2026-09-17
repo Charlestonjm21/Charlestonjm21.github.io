@@ -1,0 +1,53 @@
+/* ============================================================
+   COMP 322 - Assignment 3
+   calculator.css
+   Author: Charlestone Mayenga
+   Purpose: Styling for the calculator result and summary tables.
+   ============================================================ */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 30px;
+    color: #222222;
+}
+
+h1, h2 {
+    color: #003366;
+}
+
+/* ---------- Shared table styling ---------- */
+table {
+    border-collapse: collapse;   /* removes the default gaps between cells */
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 28px;
+}
+
+th, td {
+    border: 1px solid #999999;
+    padding: 10px 14px;
+    text-align: left;
+}
+
+/* Header row */
+th {
+    background-color: #003366;
+    color: #ffffff;
+}
+
+/* Zebra striping for readability */
+tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+/* Highlight the row under the cursor */
+tr:hover td {
+    background-color: #ffe9b3;
+}
+
+/* ---------- Navigation link ---------- */
+a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #003366;
+}
