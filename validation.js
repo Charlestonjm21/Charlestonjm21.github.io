@@ -113,6 +113,23 @@ function validateForm() {
         // The assignment asks for an alert here, not an inline message
         alert("passwords do not match");
     }
+        // ----- Field 6: Gender -----
+    // Radio buttons share a name, so querySelector with :checked
+    // finds whichever one is selected, or null if none are.
+    let gender = document.querySelector("input[name='gender']:checked");
+
+    if (gender === null) {
+        showMessage("Please Select", "Gender", "empty");
+    }
+
+    // ----- Field 7: Age Group -----
+    // The first <option> has an empty value, so nothing selected
+    // reads as an empty string.
+    let ageGroup = document.getElementById("ageGroup").value;
+
+    if (ageGroup === "") {
+        showMessage("Please Select", "Age Group", "empty");
+    }
 }
 
 
