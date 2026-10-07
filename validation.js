@@ -130,6 +130,10 @@ function validateForm() {
     if (ageGroup === "") {
         showMessage("Please Select", "Age Group", "empty");
     }
+        // If nothing was written to the message area, everything passed
+    if (messageArea.innerHTML === "") {
+        showMessage("Form submitted", "successfully", "valid");
+    }
 }
 
 
