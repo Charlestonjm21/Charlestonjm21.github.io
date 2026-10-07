@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     COMP 322 - Assignment 4
+     form.html
+     Author: Charlestone Mayenga
+     Purpose: User input form. All validation is handled in
+              validation.js using regular expressions. No
+              pattern attributes are used anywhere in this file.
+     ============================================================ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+    <h1>Registration Form</h1>
+
+    <form id="signupForm">
+
+        <table>
+            <!-- ----- Field 1: Username ----- -->
+            <tr>
+                <td class="label">Username:</td>
+                <td><input type="text" id="username" name="username"></td>
+            </tr>
+
+            <!-- ----- Field 2: Email ----- -->
+            <tr>
+                <td class="label">Email:</td>
+                <td><input type="text" id="email" name="email"></td>
+            </tr>
+
+            <!-- ----- Field 3: Phone number ----- -->
+            <tr>
+                <td class="label">Phone number:</td>
+                <td><input type="text" id="phone" name="phone"></td>
+            </tr>
+
+            <!-- ----- Field 4: Password ----- -->
+            <tr>
+                <td class="label">Enter Password:</td>
+                <td><input type="password" id="password" name="password"></td>
+            </tr>
+
+            <!-- ----- Field 5: Confirm password ----- -->
+            <tr>
+                <td class="label">Confirm Password:</td>
+                <td><input type="password" id="confirmPassword"
+                           name="confirmPassword"></td>
+            </tr>
+
+            <!-- ----- Field 6: Gender (radio buttons) ----- -->
+            <!-- All three share name="gender" so only one can be picked -->
+            <tr>
+                <td class="label">Gender:</td>
+                <td>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label>
+
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Male</label>
+
+                    <input type="radio" id="other" name="gender" value="Other">
+                    <label for="other">Other</label>
+                </td>
+            </tr>
+
+            <!-- ----- Field 7: Age group (dropdown) ----- -->
+            <!-- The first option is blank so "nothing selected" is
+                 detectable as an empty value in validation.js -->
+            <tr>
+                <td class="label">Age Group:</td>
+                <td>
+                    <select id="ageGroup" name="ageGroup">
+                        <option value=""></option>
+                        <option value="under21">&lt; 21 years old</option>
+                        <option value="21-25">21 - 25 years old</option>
+                        <option value="26-35">26 - 35 years old</option>
+                        <option value="36-50">36 - 50 years old</option>
+                        <option value="over50">&gt; 50 years old</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- ----- Field 8: Music genre (checkboxes) ----- -->
+            <!-- Not validated: the assignment only requires checks
+                 on fields 1 through 7 -->
+            <tr>
+                <td class="label">Favorite Music Genre:</td>
+                <td>
+                    <input type="checkbox" id="pop" name="genre" value="Pop">
+                    <label for="pop">Pop</label>
+
+                    <input type="checkbox" id="hiphop" name="genre" value="Hiphop">
+                    <label for="hiphop">Hiphop</label>
+
+                    <input type="checkbox" id="jazz" name="genre" value="Jazz">
+                    <label for="jazz">Jazz</label>
+
+                    <input type="checkbox" id="rock" name="genre" value="Rock">
+                    <label for="rock">Rock</label>
+
+                    <input type="checkbox" id="classical" name="genre"
+                           value="Classical">
+                    <label for="classical">Classical Music</label>
+
+                    <input type="checkbox" id="country" name="genre"
+                           value="Country">
+                    <label for="country">Country</label>
+                </td>
+            </tr>
+
+            <!-- ----- Buttons ----- -->
+            <tr>
+                <td></td>
+                <td>
+                    <!-- type="button" not "submit", so the page never
+                         reloads and validation.js stays in control -->
+                    <input type="button" id="submitButton" value="submit">
+                    <input type="reset" id="clearButton" value="clear">
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+    <!-- Validation messages get written into this div -->
+    <div id="messages"></div>
+
+    <p><a href="index.html">Back to my home page</a></p>
+
+    <!-- Loaded last so the form elements exist before the script runs -->
+    <script src="validation.js"></script>
+
+</body>
+</html>
