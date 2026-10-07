@@ -38,19 +38,56 @@ function clearMessages() {
     messageArea.innerHTML = "";
 }
 
+/* ============================================================
+   Regular expressions
+   Each pattern is anchored with ^ and $ so it must match the
+   entire value, not just a fragment somewhere inside it.
+   ============================================================ */
+
+// Lowercase letters or digits only, 4 to 12 characters
+let usernamePattern = /^[a-z0-9]{4,12}$/;
+
+// Something, then @, then a domain ending in .net .com .org or .edu
+let emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(net|com|org|edu)$/;
+
+// Exactly (123)-456-7890 — parentheses and hyphens are literal
+let phonePattern = /^\(\d{3}\)-\d{3}-\d{4}$/;
+
 
 /* ------------------------------------------------------------
    validateForm()
-   Runs every check. Individual field checks get added in the
-   next steps.
+   Runs every check. Each field is tested for emptiness first,
+   then for format.
    ------------------------------------------------------------ */
 function validateForm() {
     clearMessages();
 
-    // Field checks will go here in steps 3, 4 and 5
+    // ----- Field 1: Username -----
+    let username = document.getElementById("username").value;
 
-    // Temporary: confirms the button is wired up correctly
-    showMessage("Validation ran for", "all fields", "empty");
+    if (username === "") {
+        showMessage("Please Enter", "Username", "empty");
+    } else if (!usernamePattern.test(username)) {
+        showMessage("Please Enter", "a valid username", "invalid");
+    }
+
+    // ----- Field 2: Email -----
+    let email = document.getElementById("email").value;
+
+    if (email === "") {
+        showMessage("Please Enter", "Email", "empty");
+    } else if (!emailPattern.test(email)) {
+        showMessage("Please Enter", "a valid email", "invalid");
+    }
+
+    // ----- Field 3: Phone number -----
+    let phone = document.getElementById("phone").value;
+
+    if (phone === "") {
+        showMessage("Please Enter", "Phone Number", "empty");
+    } else if (!phonePattern.test(phone)) {
+        showMessage("Please Enter", "a valid phone number", "invalid");
+    }
 }
 
 
