@@ -1,0 +1,46 @@
+/* ============================================================
+   COMP 322 - Assignment 4
+   form.css
+   Author: Charlestone Mayenga
+   Purpose: Layout for form.html and coloring for the two
+            classes of validation message.
+   ============================================================ */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 30px;
+}
+
+/* Right-align the field labels against their inputs */
+.label {
+    text-align: right;
+    padding-right: 8px;
+}
+
+td {
+    padding: 4px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 200px;
+    padding: 3px;
+}
+
+/* ---------- Validation messages ---------- */
+#messages p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+/* Red: the field was left empty */
+.empty {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+/* Orange: something was entered but it failed the regex */
+.invalid {
+    color: #ff8c00;
+    font-weight: bold;
+}
