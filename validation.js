@@ -53,6 +53,13 @@ let emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.(net|com|org|edu)$/;
 // Exactly (123)-456-7890 — parentheses and hyphens are literal
 let phonePattern = /^\(\d{3}\)-\d{3}-\d{4}$/;
 
+// At least one lowercase, one uppercase, one digit, one special
+// character, and more than 8 characters total.
+// The (?=...) groups are lookaheads: each one scans the whole
+// string for its requirement without consuming any characters,
+// so all four conditions must hold at once.
+let passwordPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{9,}$/;
 
 /* ------------------------------------------------------------
    validateForm()
@@ -87,6 +94,24 @@ function validateForm() {
         showMessage("Please Enter", "Phone Number", "empty");
     } else if (!phonePattern.test(phone)) {
         showMessage("Please Enter", "a valid phone number", "invalid");
+    }
+        // ----- Field 4: Password -----
+    let password = document.getElementById("password").value;
+
+    if (password === "") {
+        showMessage("Please Enter", "Password", "empty");
+    } else if (!passwordPattern.test(password)) {
+        showMessage("Please Enter", "a valid password", "invalid");
+    }
+
+    // ----- Field 5: Confirm password -----
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (confirmPassword === "") {
+        showMessage("Please Enter", "Confirm Password", "empty");
+    } else if (password !== confirmPassword) {
+        // The assignment asks for an alert here, not an inline message
+        alert("passwords do not match");
     }
 }
 
