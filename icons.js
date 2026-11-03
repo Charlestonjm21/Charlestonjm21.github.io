@@ -66,5 +66,13 @@ $(document).ready(function () {
 
         $("body").append(big);
     });
+        /* --------------------------------------------------------
+       mousemove on the <span>: show live mouse coordinates
+       -------------------------------------------------------- */
+    $("#iconBar").on("mousemove", function (event) {
+        // event.pageX / pageY are the pointer's position on the page
+        $("#coordText").text("Mouse X: " + event.pageX +
+                             ", Y: " + event.pageY);
+    });
 
 });
