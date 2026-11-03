@@ -43,4 +43,28 @@ $(document).ready(function () {
         window.open(url, "_blank");
     });
 
+        /* --------------------------------------------------------
+       click: show an enlarged copy of the icon after the
+       current mouse position
+       -------------------------------------------------------- */
+    $(".icon").on("click", function (event) {
+        // Remove any enlarged icon from an earlier click so only
+        // one is on screen at a time
+        $("#enlarged").remove();
+
+        // Build a new image using the clicked icon's source file
+        let big = $("<img>")
+            .attr("id", "enlarged")
+            .attr("src", $(this).attr("src"))
+            .css({
+                // event.pageX / pageY are the mouse coordinates on the
+                // page. The +15 offset places the image just after the
+                // pointer instead of directly under it.
+                left: event.pageX + 15,
+                top: event.pageY + 15
+            });
+
+        $("body").append(big);
+    });
+
 });

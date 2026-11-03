@@ -1,0 +1,39 @@
+/* ============================================================
+   COMP 322 - Assignment 5
+   icons.css
+   Author: Charlestone Mayenga
+   Purpose: Icon sizing and page layout.
+   ============================================================ */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 30px;
+}
+
+/* Requirement 1c: every icon is 100 pixels tall.
+   Width is left automatic so the icons keep their proportions. */
+.icon {
+    height: 100px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+/* Gives the mousemove area (step 5) a visible size and boundary */
+#iconBar {
+    display: inline-block;
+    padding: 20px;
+    border: 1px dashed #999999;
+    white-space: nowrap;     /* keep all six icons on one line */
+    overflow-x: auto;        /* scroll sideways instead of wrapping if the window is tiny */
+    max-width: 100%;
+}
+
+/* Enlarged icon shown by the click event */
+#enlarged {
+    position: absolute;      /* lets left/top place it at the mouse position */
+    height: 300px;           /* three times the 100px icons */
+    border: 2px solid #333333;
+    background-color: #ffffff;
+    z-index: 10;             /* draw on top of the other icons */
+    pointer-events: none;    /* mouse passes through, so it never blocks hover */
+}
