@@ -13,8 +13,6 @@ $(document).ready(function () {
        mouseenter: fires once when the pointer moves onto an icon
        -------------------------------------------------------- */
     $(".icon").on("mouseenter", function () {
-        // $(this) is the one icon the mouse just entered.
-        // .data("name") reads its data-name attribute from the HTML.
         let name = $(this).data("name");
 
         // Show the icon's name in the "In: " line
@@ -35,6 +33,14 @@ $(document).ready(function () {
 
         // Restore full opacity
         $(this).css("opacity", 1.0);
+    });
+
+    /* --------------------------------------------------------
+       dblclick: open the icon's website in a new tab
+       -------------------------------------------------------- */
+    $(".icon").on("dblclick", function () {
+        let url = $(this).data("url");
+        window.open(url, "_blank");
     });
 
 });
